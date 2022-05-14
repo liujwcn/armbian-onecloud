@@ -4,7 +4,6 @@ BOOTBRANCH='branch:odroidc-v2011.03'
 BOOTDIR='u-boot-odroidc1'
 UBOOT_COMPILER="arm-linux-gnueabihf-"
 UBOOT_USE_GCC='< 4.9'
-BOOTSCRIPT="boot-odroid-c1.ini:boot.ini"
 SERIALCON="ttyAML0"
 UBOOT_TARGET_MAP=';;sd_fuse/bl1.bin.hardkernel sd_fuse/u-boot.bin'
 SRC_LOADADDR='LOADADDR=0x00208000'
@@ -33,6 +32,19 @@ case $BRANCH in
 		KERNELPATCHDIR='meson-current'
 
 	;;
+esac
+
+case $BOARD in
+	odroidc1)
+
+		BOOTSCRIPT="boot-odroid-c1.ini:boot.ini"
+
+	;;
+	onecloud)
+
+		BOOTSCRIPT="boot-onecloud.cmd:boot.cmd"
+
+	;
 esac
 
 write_uboot_platform()
